@@ -1,0 +1,1 @@
+function f() {	var saying = "Hello world!";	console.log(saying);}function add(foo, bar) {	var ret = foo + bar;	return ret;}

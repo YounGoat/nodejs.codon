@@ -1,0 +1,30 @@
+{
+    "dependencies": {
+        "source-map": "^0.6.1",
+        "uglify-js": "^3.2.2"
+    },
+    "devDependencies": {
+        "mocha": "^3.3.0"
+    },
+    "directories": {},
+    "scripts": {
+        "test": "mocha"
+    },
+    "name": "codon",
+    "version": "0.0.1",
+    "main": "index.js",
+    "keywords": [
+        "javascript-helper"
+    ],
+    "homepage": "https://github.com/YounGoat/nodejs.codon",
+    "description": "JavaScript Aide",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/YounGoat/nodejs.codon.git"
+    },
+    "author": {
+        "name": "YounGoat",
+        "email": "youngoat@163.com",
+        "url": "https://youngoat.github.io"
+    }
+}
