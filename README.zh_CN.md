@@ -16,7 +16,7 @@ __JavaScript Code Assistant__
 
 ##	快速开始
 
-格式化代码。如果提供了源代码中的位置信息（包括行、列信息，以下称之为代码坐标），则同时返回格式化代码中的对应坐标。
+格式化代码。如果提供了一个或一组源代码中的位置信息（包括行、列信息，以下称之为代码坐标），则同时返回格式化代码中的对应坐标：
 
 ```javascript
 const codon = require('codon');
@@ -29,13 +29,17 @@ let output_1 = codon.format({
     position: { line: 1, column: 10 },
 });
 // RETURN: { code, position }
+```
 
+如果需要获取坐标转换方法，将参数对象的 `position` 属性赋值为 `true`：
+```javascript
 // -- to do poisition transformation by yourself --
 let output_2 = codon.format({ 
     code: sourceCode,
     position: true,
 });
 // RETURN: { code, positionFor }
+
 let transformedPosition = output_2.positionFor({ line: 1, column: 10 });
 // RETURN: { line, column }
 ```
