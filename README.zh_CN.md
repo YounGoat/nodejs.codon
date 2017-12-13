@@ -11,7 +11,7 @@ __JavaScript Code Assistant__
 
 ##	链接
 
-*	[更新日志](./CHANGELOG.md)
+*	[更新日志](./CHANGELOG.md)
 *	[主页](https://github.com/YounGoat/nodejs.jsai)
 
 ##	快速开始
@@ -37,7 +37,7 @@ let output_2 = codon.format({
 });
 // RETURN: { code, positionFor }
 let transformedPosition = output_2.positionFor({ line: 1, column: 10 });
-// RETURN: { line, column }
+// RETURN: { line, column }
 ```
 
 ##  API
@@ -49,8 +49,8 @@ let transformedPosition = output_2.positionFor({ line: 1, column: 10 });
     源代码文本。
 
 *   *boolean* | *Object* | *[Object]* __position__ OPTIONAL  
-    若该属性为对象或对象数组，指源代码坐标。  
-    若该属性为布尔值且为值为 `true`，则返回值对象中将提供一个 `positionFor()` 方法，可用于完成从源代码坐标到生成代码坐标的转换。
+    若该属性为对象或对象数组，指源代码坐标。  
+    若该属性为布尔值且为值为 `true`，则返回值对象中将提供一个 `positionFor()` 方法，可用于完成从源代码坐标到生成代码坐标的转换。
     
 
 举例如下：
@@ -58,10 +58,10 @@ let transformedPosition = output_2.positionFor({ line: 1, column: 10 });
     生成压缩代码文本。
 
 *   { string *code*, object *position* } __codon.format__({ string *code*, object *position* })  
-    生成压缩代码文本，及一个源代码坐标所对应的生成代码坐标。
+    生成压缩代码文本，及一个源代码坐标所对应的生成代码坐标。
 
 *   { string *code*, Array *position* } __codon.format__({ string *code*, Array *position* })  
-    生成压缩代码文本，及一组源代码坐标所对应的生成代码坐标。
+    生成压缩代码文本，及一组源代码坐标所对应的生成代码坐标。
 
 *   { string *code*, function *positionFor* } __codon.format__({ string *code*, boolean *position* })  
     生成压缩代码文本，及从源代码坐标到生成代码坐标的转换方法。该方法接收坐标对象或坐标数组作为参数，相应地返回一个或一组坐标对象。
@@ -73,8 +73,8 @@ let transformedPosition = output_2.positionFor({ line: 1, column: 10 });
     源代码文本。
 
 *   *boolean* | *Object* | *[Object]* __position__ OPTIONAL  
-    若该属性为对象或对象数组，指源代码坐标。  
-    若该属性为布尔值且为值为 `true`，则返回值对象中将提供一个 `positionFor()` 方法，可用于完成从源代码坐标到生成代码坐标的转换。
+    若该属性为对象或对象数组，指源代码坐标。  
+    若该属性为布尔值且为值为 `true`，则返回值对象中将提供一个 `positionFor()` 方法，可用于完成从源代码坐标到生成代码坐标的转换。
     
 
 举例如下：
@@ -82,13 +82,13 @@ let transformedPosition = output_2.positionFor({ line: 1, column: 10 });
     生成格式化代码文本。
 
 *   { string *code*, object *position* } __codon.format__({ string *code*, object *position* })  
-    生成格式化代码文本，及一个源代码坐标所对应的生成代码坐标。
+    生成格式化代码文本，及一个源代码坐标所对应的生成代码坐标。
 
 *   { string *code*, Array *position* } __codon.format__({ string *code*, Array *position* })  
-    生成格式化代码文本，及一组源代码坐标所对应的生成代码坐标。
+    生成格式化代码文本，及一组源代码坐标所对应的生成代码坐标。
 
 *   { string *code*, function *positionFor* } __codon.format__({ string *code*, boolean *position* })  
-    生成格式化代码文本，及从源代码坐标到生成代码坐标的转换方法。该方法接收坐标对象或坐标数组作为参数，相应地返回一个或一组坐标对象。
+    生成格式化代码文本，及从源代码坐标到生成代码坐标的转换方法。该方法接收坐标对象或坐标数组作为参数，相应地返回一个或一组坐标对象。
 
 ##  推荐
 

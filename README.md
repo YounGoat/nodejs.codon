@@ -36,7 +36,7 @@ let output_2 = codon.format({
 });
 // RETURN: { code, positionFor }
 let transformedPosition = output_2.positionFor({ line: 1, column: 10 });
-// RETURN: { line, column }
+// RETURN: { line, column }
 ```
 
 If you wanna compress source code other than formatting it, use `codon.compress()` instead.
