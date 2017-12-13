@@ -2,6 +2,7 @@
 
 const MODULE_REQUIRE = 1
     /* built-in */
+    , util = require('util')
     
     /* NPM */
     , UglifyJS = require("uglify-js")
@@ -11,10 +12,7 @@ const MODULE_REQUIRE = 1
     ;
 
 function compress(source) {
-    var code = {
-        'source.js': source.code,
-    };
-    var options = {
+    var minifyOptions = {
         compress: {
             // ...
         },
@@ -23,29 +21,12 @@ function compress(source) {
             beautify: false,
             max_line_len: 80,
         },
-        sourceMap: true,
     };
-
-    let output = UglifyJS.minify(code, options);
-    let ret = { code: output.code };
-
-    if (source.position) {
-        let smc = new sourceMap.SourceMapConsumer(output.map);
-        ret.position = smc.generatedPositionFor({
-            source: 'source.js',
-            line: source.position.line,
-            column: source.position.column,
-        });
-    }
-
-    return ret;
+    return _minify(source, minifyOptions);
 }
 
 function format(source) {
-    var code = {
-        'source.js': source.code,
-    };
-    var options = {
+    var minifyOptions = {
         compress: false,
         mangle: false,
         output: {
@@ -53,19 +34,45 @@ function format(source) {
             max_line_len: 80,
             // ...
         },
-        sourceMap: true,
+    };
+    return _minify(source, minifyOptions);
+}
+
+function _minify(source, minifyOptions) {
+    let sourceCode = util.isBuffer(source.code)
+        ? source.code.toString('utf8')
+        : source.code
+        ;
+
+    let code = {
+        'source.js': sourceCode,
     };
 
-    let output = UglifyJS.minify(code, options);
+    minifyOptions.sourceMap = true;
+    let output = UglifyJS.minify(code, minifyOptions);
     let ret = { code: output.code };
 
     if (source.position) {
         let smc = new sourceMap.SourceMapConsumer(output.map);
-        ret.position = smc.generatedPositionFor({
-            source: 'source.js',
-            line: source.position.line,
-            column: source.position.column,
-        });    
+        let positionFor = (position) => {
+            if (position instanceof Array) {
+                return position.map(positionFor);
+            }
+            else {
+                return smc.generatedPositionFor({
+                    source: 'source.js',
+                    line: position.line,
+                    column: position.column,
+                });
+            }
+        };
+
+        if (typeof source.position == 'boolean') {
+            ret.positionFor = positionFor;        
+        }
+        else {
+            ret.position = positionFor(source.position);
+        }
     }
 
     return ret;
